@@ -1,4 +1,4 @@
-const map = [
+const map2 = [
   "  WWWWW ",
   "WWW   W ",
   "WOSB  W ",
@@ -9,12 +9,33 @@ const map = [
   "W   O  W",
   "WWWWWWWW"
 ];
+const map = [];
+
+for (let newRow = 0; newRow < map2.length; newRow++) {
+  let newArray = [];
+  for (let newCell = 0; newCell < map2[newRow].length; newCell++) {
+    newArray.push(map2[newRow][newCell]);
+  }
+  map.push(newArray);
+}
+
 let currentX = 2;
 let currentY = 2;
-// let currentPosition = map[currentY][currentX];
+
 const main = document.getElementById("maze");
 const winMesssage = document.getElementById("winningmessage");
 let gameOver = false;
+function checkWin() {
+  for (let i = 0; i < map.length; i++) {
+    for (let j = 0; j < map[i].length; j++) {
+      if (map[i][j] === "B") {
+        return;
+      }
+    }
+  }
+  gameOver = true;
+  winMesssage.innerHTML = "Your Awesome!";
+}
 
 function renderMaze() {
   let rowcontainer = document.createElement("div");
@@ -28,63 +49,49 @@ function renderMaze() {
       columnAbsolute++
     ) {
       let wall = document.createElement("div");
-      wall.dataset.rowIndex = rowAbsolute;
-      wall.dataset.cellIndex = columnAbsolute;
       rowDiv.appendChild(wall);
 
       switch (row[columnAbsolute]) {
         case "C":
-          wall.setAttribute("id", "start");
+          wall.setAttribute("id", "manOnContainer");
           break;
 
         case "W":
           wall.classList.add("wall");
-          wall.dataset.cellType = "border";
           break;
 
         case "S":
           wall.setAttribute("id", "start");
-          wall.dataset.cellType = "start";
           break;
 
         case " ":
           wall.classList.add("walkway");
-          wall.dataset.cellType = "floor";
           break;
 
         case "B":
           wall.setAttribute("id", "box");
-          wall.dataset.cellType = "box";
           break;
-
-          let box = document.createElement("div");
-          box.dataset.cellType = "box";
-          cell.appendChild("box");
 
         case "O":
           wall.setAttribute("id", "emptyStorage");
-          wall.dataset.cellType = "emptyStorage";
           break;
 
         case "X":
           wall.setAttribute("id", "boxOnStart");
-          wall.dataset.cellType = "boxOnStart";
           break;
       }
     }
     rowcontainer.appendChild(rowDiv);
-    //     main.appendChild(maze);
   }
 
-  if (main.childNodes[0]) {
+  while (main.firstChild) {
     main.removeChild(main.childNodes[0]);
   }
   main.appendChild(rowcontainer);
 }
 renderMaze();
-const player = document.getElementById("player");
+
 let start = document.getElementById("start");
-start.appendChild(player);
 let currentPosition = start;
 
 document.addEventListener("keydown", handleMove);
@@ -97,7 +104,7 @@ function makeMoveTwo(x, y) {
   let nextnextY = currentY + 2 * y;
   let nextNextPosition = map[nextnextY][nextnextX];
   if (nextPosition === "B") {
-    map[nextY][nextX] = " ";
+    map[nextY][nextX] = "S";
     if (nextNextPosition === "O") {
       map[nextnextY][nextnextX] = "X";
     } else {
@@ -160,6 +167,7 @@ function handleMove(event) {
         break;
     }
   }
+  checkWin();
 }
 
 function makeMove(x, y) {
@@ -189,6 +197,9 @@ function legalMove(x, y) {
   let nextPosition = map[nextY][nextX];
   let nextnextX = currentX + 2 * x;
   let nextnextY = currentY + 2 * y;
+  if (nextPosition === "W") {
+    return false;
+  }
   let nextNextPosition = map[nextnextY][nextnextX];
   if (nextPosition === " " || nextPosition === "O") {
     return true;

@@ -7,10 +7,12 @@ h1 {
   background: red;
 }
 
-#player {
-  position: absolute;
-  width: 30px;
+#manOnContainer {
+  background-image: url("running-icon2.png");
   height: 30px;
+  width: 30px;
+  background-size: 100% 100%;
+  background-color: blueviolet;
 }
 
 main {
@@ -37,6 +39,7 @@ main {
   background-image: url("running-icon2.png");
   height: 30px;
   width: 30px;
+  background-size: 100% 100%;
 }
 
 #finish {
