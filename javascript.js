@@ -34,7 +34,7 @@ function checkWin() {
     }
   }
   gameOver = true;
-  winMesssage.innerHTML = "Your Awesome!";
+  winMesssage.innerHTML = "You have obtained enlightenment!";
 }
 
 function renderMaze() {

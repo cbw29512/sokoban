@@ -8,9 +8,9 @@ h1 {
 }
 
 #manOnContainer {
-  background-image: url("running-icon2.png");
-  height: 30px;
-  width: 30px;
+  background-image: url("buddha.png");
+  height: 40px;
+  width: 40px;
   background-size: 100% 100%;
   background-color: blueviolet;
 }
@@ -30,28 +30,30 @@ main {
 }
 
 .wall {
-  background: black;
-  height: 30px;
-  width: 30px;
-}
-
-#start {
-  background-image: url("running-icon2.png");
-  height: 30px;
-  width: 30px;
+  background-image: url("brickwall.png");
+  height: 40px;
+  width: 40px;
   background-size: 100% 100%;
 }
 
+#start {
+  background-image: url("buddha.png");
+  height: 40px;
+  width: 40px;
+  background-size: 100% 100%;
+  background-color: lightskyblue;
+}
+
 #finish {
-  height: 30px;
-  width: 30px;
+  height: 40px;
+  width: 40px;
   background: red;
 }
 
 .walkway {
-  height: 30px;
-  width: 30px;
-  background: whitesmoke;
+  height: 40px;
+  width: 40px;
+  background: lightskyblue;
 }
 
 button {
@@ -63,7 +65,7 @@ button {
 #winningmessage {
   display: flex;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  height: 20px;
+  height: 30px;
   width: 100px;
   align-items: center;
   justify-content: center;
@@ -71,21 +73,27 @@ button {
 
 #box {
   display: flex;
-  height: 30px;
-  width: 30px;
-  background-color: salmon;
+  height: 40px;
+  width: 40px;
+  background-image: url("barrel.png");
+  background-size: 100% 100%;
+  background-color: lightskyblue;
 }
 
 #emptyStorage {
   display: flex;
-  height: 30px;
-  width: 30px;
-  background-color: blueviolet;
+  height: 40px;
+  width: 40px;
+  background-image: url("X.png");
+  background-size: 100% 100%;
+  background-color: lightskyblue;
 }
 
 #boxOnStart {
   display: flex;
-  height: 30px;
-  width: 30px;
-  background-color: brown;
+  height: 40px;
+  width: 40px;
+  background-image: url("goldenlotus2.png");
+  background-color: lightskyblue;
+  background-size: 100% 100%;
 }
